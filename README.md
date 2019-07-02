@@ -87,3 +87,20 @@ library(cexportuser)
 plus_two(2L)
 #> [1] 4
 ```
+
+# References
+
+A few packages do this:
+
+  - [bdsmatrix](https://github.com/cran/bdsmatrix)
+  - [xts](https://github.com/joshuaulrich/xts)
+
+Also R Extensions has some
+    advice:
+
+  - <https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages>
+
+And there is some information in Advanced R:
+
+  - [Exporting C Code](https://r-pkgs.org/src.html#c-export)
+  - [Importing C Code](https://r-pkgs.org/src.html#c-import)
