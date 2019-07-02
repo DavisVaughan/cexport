@@ -1,22 +1,27 @@
-#define R_NO_REMAP
-#include <R.h>
-#include <Rinternals.h>
-#include <R_ext/Rdynload.h>
+#ifndef cexport_api_h
+#define cexport_api_h
 
+#include <Rinternals.h> // For SEXP usage
+#include <R_ext/Rdynload.h> // For R_GetCCallable
+
+// Function pointer signature:
 // (SEXP (*)(SEXP))
 //  ^     ^  ^
 //  |     |  |- Takes a SEXP
 //  |     |- Object is a function pointer
 //  |- Returns a SEXP
 
-// We make the pointer static so it is only looked up once
-
 SEXP cexport_plus_one(SEXP x) {
-  static SEXP (*f)() = NULL;
+  // Initialize a static function pointer that persists between fn calls
+  static SEXP (*fn)(SEXP) = NULL;
 
-  if (f == NULL) {
-    f = (SEXP (*)(SEXP)) R_GetCCallable("cexport", "cexport_plus_one");
+  // Only look it up once
+  if (fn == NULL) {
+    fn = (SEXP (*)(SEXP)) R_GetCCallable("cexport", "cexport_plus_one");
   }
 
-  return f(x);
+  // Call the function
+  return fn(x);
 }
+
+#endif // cexport_api_h
