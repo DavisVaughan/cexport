@@ -29,6 +29,18 @@ This package implements, registers, and exports the function that will be called
 
 The other package that goes along with this one and actually calls the C function from it's own C code is [cexportuser](https://github.com/DavisVaughan/cexportuser).
 
+You can install this package with:
+
+```{r, eval=FALSE}
+devtools::install_github("DavisVaughan/cexport")
+```
+
+You can install the companion package that uses this C code (which should "just work" and also install cexport if needed) with:
+
+```{r, eval = FALSE}
+devtools::install_github("DavisVaughan/cexportuser")
+```
+
 # Details
 
 Here are the steps to do this yourself:
@@ -56,4 +68,11 @@ The next section will be from the perspective of a package that is going to be c
 - Create your C function that is going to call `cexport_plus_one()`. At the top of the file put `#include <cexport_api.h>`. RStudio should recognize this for you. You can now call `cexport_plus_one()`. (`src/arith.h` - `cexportuser_plus_two()`).
 
 - Export the C function to R if you want (`src/init.c`, exported as `plus_two()` in `arith.R`).
+
+If all goes well you should be able to do something like:
+
+```{r}
+library(cexportuser)
+plus_two(2L)
+```
 

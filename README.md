@@ -22,6 +22,19 @@ The other package that goes along with this one and actually calls the C
 function from it’s own C code is
 [cexportuser](https://github.com/DavisVaughan/cexportuser).
 
+You can install this package with:
+
+``` r
+devtools::install_github("DavisVaughan/cexport")
+```
+
+You can install the companion package that uses this C code (which
+should “just work” and also install cexport if needed) with:
+
+``` r
+devtools::install_github("DavisVaughan/cexportuser")
+```
+
 # Details
 
 Here are the steps to do this yourself:
@@ -66,3 +79,11 @@ is [cexportuser](https://github.com/DavisVaughan/cexportuser).
 
   - Export the C function to R if you want (`src/init.c`, exported as
     `plus_two()` in `arith.R`).
+
+If all goes well you should be able to do something like:
+
+``` r
+library(cexportuser)
+plus_two(2L)
+#> [1] 4
+```
