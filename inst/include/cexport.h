@@ -1,5 +1,5 @@
-#ifndef cexport_api_h
-#define cexport_api_h
+#ifndef R_CEXPORT_H
+#define R_CEXPORT_H
 
 #include <Rinternals.h> // For SEXP usage
 #include <R_ext/Rdynload.h> // For R_GetCCallable
@@ -24,4 +24,4 @@ static R_INLINE SEXP cexport_plus_one(SEXP x) {
   return fn(x);
 }
 
-#endif // cexport_api_h
+#endif // R_CEXPORT_H

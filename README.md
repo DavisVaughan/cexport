@@ -52,9 +52,9 @@ Here are the steps to do this yourself:
     themselves in their own package, or you can be nice and generate a
     header file that they can just `#include` to get access to your API.
 
-  - Let’s be nice. In `inst/include/cexport_api.h` we create an API
-    function with essentially the same signature as our original
-    function, look up the C callable once, and call the function.
+  - Let’s be nice. In `inst/include/cexport.h` we create an API function
+    with essentially the same signature as our original function, look
+    up the C callable once, and call the function.
     
       - We also make the function `static` so that users can call it
         from multiple of their C files without throwing any “duplicate
@@ -82,9 +82,9 @@ is [cexportuser](https://github.com/DavisVaughan/cexportuser).
     (`cexportuser-package.R`).
 
   - Create your C function that is going to call `cexport_plus_one()`.
-    At the top of the file put `#include <cexport_api.h>`. RStudio
-    should recognize this for you. You can now call
-    `cexport_plus_one()`. (`src/arith.h` - `cexportuser_plus_two()`).
+    At the top of the file put `#include <cexport.h>`. RStudio should
+    recognize this for you. You can now call `cexport_plus_one()`.
+    (`src/arith.h` - `cexportuser_plus_two()`).
 
   - Export the C function to R if you want (`src/init.c`, exported as
     `plus_two()` in `arith.R`).
