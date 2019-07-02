@@ -100,7 +100,7 @@ Also R Extensions has some
 
   - <https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Linking-to-native-routines-in-other-packages>
 
-And there is some information in Advanced R:
+And there is some information in R Packages:
 
   - [Exporting C Code](https://r-pkgs.org/src.html#c-export)
   - [Importing C Code](https://r-pkgs.org/src.html#c-import)
