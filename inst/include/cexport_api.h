@@ -11,7 +11,7 @@
 //  |     |- Object is a function pointer
 //  |- Returns a SEXP
 
-SEXP cexport_plus_one(SEXP x) {
+static R_INLINE SEXP cexport_plus_one(SEXP x) {
   // Initialize a static function pointer that persists between fn calls
   static SEXP (*fn)(SEXP) = NULL;
 

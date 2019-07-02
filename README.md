@@ -53,8 +53,17 @@ Here are the steps to do this yourself:
     header file that they can just `#include` to get access to your API.
 
   - Let’s be nice. In `inst/include/cexport_api.h` we create an API
-    function with the same signature as our original function, look up
-    the C callable once, and call the function.
+    function with essentially the same signature as our original
+    function, look up the C callable once, and call the function.
+    
+      - We also make the function `static` so that users can call it
+        from multiple of their C files without throwing any “duplicate
+        symbol” errors.
+    
+      - And we `R_INLINE` the function to reduce the overhead of the C
+        function call. Essentially, once we have called the function
+        once to get the C callable from `cexport`, repeated calls to the
+        function will be just as fast as calling it natively.
 
   - Now install the package.
 
