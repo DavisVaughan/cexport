@@ -99,8 +99,10 @@ plus_two(2L)
 
 # References
 
-A few packages do this:
+A few packages do this, with `cleancall` probably being the easiest to
+read:
 
+  - [cleancall](https://github.com/r-lib/cleancall/)
   - [bdsmatrix](https://github.com/cran/bdsmatrix)
   - [xts](https://github.com/joshuaulrich/xts)
 
